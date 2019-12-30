@@ -1,8 +1,15 @@
 <template lang="html">
-  <h1>American Breweries</h1>
+  <div>
+    <h1>American Breweries</h1>
+    <div>
+      <breweries-list v-bind:breweries="breweries"></breweries-list>
+    </div>
+  </div>
 </template>
 
 <script>
+import breweries from "./components/breweriesList";
+
 export default {
   name: "app",
   data() {
@@ -15,6 +22,10 @@ export default {
     fetch("https://api.openbrewerydb.org/breweries")
       .then(result => result.json())
       .then(brewery => (this.breweries = brewery));
+  },
+
+  components: {
+    "breweries-list": breweries
   }
 };
 </script>
