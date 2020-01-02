@@ -1,13 +1,22 @@
 <template lang="html">
   <div>
-    <li>{{brewery.name}}</li>
+    <li v-on:click="onClick">{{brewery.name}}</li>
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main.js";
+
 export default {
   name: "breweryItem",
-  props: ["brewery"]
+
+  props: ["brewery"],
+
+  methods: {
+    onClick() {
+      eventBus.$emit("selected-brewery", this.brewery);
+    }
+  }
 };
 </script>
 

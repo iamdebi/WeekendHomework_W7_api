@@ -1,6 +1,6 @@
 <template lang="html">
   <ul>
-    <brewery-item v-bind:brewery="brewery" v-for="(brewery, index) in breweries"></brewery-item>
+    <brewery-item v-for="(brewery, index) in breweries" v-bind:brewery="brewery"></brewery-item>
   </ul>
 </template>
 
