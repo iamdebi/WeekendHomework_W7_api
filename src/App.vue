@@ -1,8 +1,9 @@
 <template lang="html">
   <div>
     <h1>American Breweries</h1>
+    <input type="text" name="search" v-model="searchedWord" placeholder="search a Brewery ..." />
     <div>
-      <breweries-list v-bind:breweries="breweries"></breweries-list>
+      <filtered-list v-bind:breweries="filteredList"></filtered-list>
     </div>
     <div>
       <brewery-detail v-bind:brewery="selectedBrewery" v-if="selectedBrewery"></brewery-detail>
@@ -14,13 +15,15 @@
 import breweries from "./components/breweriesList";
 import breweryDetail from "./components/breweryDetail";
 import { eventBus } from "./main.js";
+import filtered from "./components/breweryFiltered";
 
 export default {
   name: "app",
   data() {
     return {
       breweries: [],
-      selectedBrewery: null
+      selectedBrewery: null,
+      searchedWord: null
     };
   },
 
@@ -36,9 +39,21 @@ export default {
 
   components: {
     "breweries-list": breweries,
-    "brewery-detail": breweryDetail
+    "brewery-detail": breweryDetail,
+    "filtered-list": filtered
+  },
+
+  computed: {
+    filteredList() {
+      return this.breweries.filter(brewery => {
+        return brewery.name
+          .toLowerCase()
+          .includes(this.searchedWord.toLowerCase());
+      });
+    }
   }
 };
 </script>
 
 <style lang="css" scoped></style>
+
