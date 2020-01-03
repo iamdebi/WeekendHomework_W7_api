@@ -20,4 +20,12 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+li {
+  padding: 6px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+</style>
