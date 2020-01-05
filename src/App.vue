@@ -2,14 +2,15 @@
   <div>
     <h1>American Breweries</h1>
     <input type="text" name="search" v-model="searchedWord" placeholder="search a Brewery ..." />
-    <div>
-      <!-- <breweries-list v-bind:breweries="breweries"></breweries-list> -->
-      <filtered-list v-bind:breweries="filteredList"></filtered-list>
+    <div class="container">
+      <div>
+        <filtered-list v-bind:breweries="filteredList"></filtered-list>
+      </div>
+      <div>
+        <brewery-detail v-bind:brewery="selectedBrewery" v-if="selectedBrewery"></brewery-detail>
+        <div id="mapid"></div>
+      </div>
     </div>
-    <div>
-      <brewery-detail v-bind:brewery="selectedBrewery" v-if="selectedBrewery"></brewery-detail>
-    </div>
-    <div id="mapid"></div>
   </div>
 </template>
 
@@ -60,11 +61,16 @@ export default {
 <style lang="css" scoped>
 ul {
   list-style: none;
-  padding: 10px;
+  margin: 10px 0;
+  padding: 0;
 }
 
 #mapid {
   height: 180px;
+}
+
+.container {
+  display: flex;
 }
 </style>
 

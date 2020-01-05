@@ -1,7 +1,5 @@
 <template lang="html">
-  <div>
-    <li v-on:click="onClick">{{brewery.name}}</li>
-  </div>
+  <li v-on:click="onClick">{{brewery.name}}</li>
 </template>
 
 <script>
@@ -20,12 +18,26 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
+body {
+  font-family: sans-serif;
+}
+
+ul {
+  margin: 0;
+}
+
 li {
-  padding: 6px;
+  padding: 6px 0;
+  list-style: none;
 }
 
 li:hover {
   cursor: pointer;
+  opacity: 0.3;
+}
+
+ul li p {
+  margin: 0;
 }
 </style>
